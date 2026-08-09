@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Open Grounds Studio">
+  <g fill="#000">
+    <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(45 50 50)"/>
+    <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(135 50 50)"/>
+    <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(225 50 50)"/>
+    <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(315 50 50)"/>
+  </g>
+</svg>
