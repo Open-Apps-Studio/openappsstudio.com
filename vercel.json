@@ -3,15 +3,33 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "opengrounds.org" }],
+      "destination": "https://openappsstudio.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "opengrounds.org" }],
       "destination": "https://openappsstudio.com/:path*",
       "permanent": true
     },
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.opengrounds.org" }],
+      "destination": "https://openappsstudio.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.opengrounds.org" }],
       "destination": "https://openappsstudio.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.openappsstudio.com" }],
+      "destination": "https://openappsstudio.com/",
       "permanent": true
     },
     {
