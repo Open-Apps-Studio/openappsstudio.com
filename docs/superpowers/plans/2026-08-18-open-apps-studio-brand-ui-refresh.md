@@ -276,4 +276,3 @@ Push studio, Sync, Better Browser History, and Cold Storage only after their pro
 - [ ] **Step 6: Record evidence**
 
 Write commit hashes, deployment IDs, test totals, browser-QA results, and redirect results to .context/domain-migration/ui-refresh-final-report.md.
-
