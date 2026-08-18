@@ -4,80 +4,143 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mental Math — Open Apps Studio</title>
-<meta name="description" content="A free mental-arithmetic trainer. Daily challenges, timed tests, and the tricks behind them. No ads, no paywalls, no accounts." />
+<meta name="description" content="A free mental-arithmetic trainer with daily challenges, timed tests, and step-by-step techniques." />
 <link rel="canonical" href="https://mentalmath.openappsstudio.com/" />
 <link rel="icon" href="/logo.svg" type="image/svg+xml" />
 <meta property="og:title" content="Mental Math — Open Apps Studio" />
-<meta property="og:description" content="A free mental-arithmetic trainer. Daily challenges, timed tests, and the tricks behind them." />
+<meta property="og:description" content="Daily challenges, timed tests, and the techniques behind faster arithmetic." />
 <meta property="og:url" content="https://mentalmath.openappsstudio.com/" />
 <meta property="og:type" content="website" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Mental Math","applicationCategory":"EducationApplication","operatingSystem":"iOS","description":"A free mental-arithmetic trainer with daily challenges, timed tests, and step-by-step techniques.","url":"https://mentalmath.openappsstudio.com/","codeRepository":"https://github.com/Open-Apps-Studio/mental-math","publisher":{"@type":"Organization","name":"Open Apps Studio","url":"https://openappsstudio.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
 <style>
-  :root { --ink: #111111; --muted: #6b7280; --line: #ececec; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    font: 400 17px/1.7 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased;
+  :root {
+    color-scheme: light;
+    --paper: #f7f5ef;
+    --surface: #fffdf8;
+    --ink: #17171b;
+    --muted: #65656d;
+    --line: #dcd8ce;
+    --accent: #e39a24;
+    --accent-deep: #a96000;
+    --accent-soft: #f8ecd4;
+    --radius: 22px;
+    --shadow: 0 24px 70px rgba(39, 35, 29, .12);
+    --max: 1120px;
   }
-  main { max-width: 560px; margin: 0 auto; padding: 96px 28px 96px; }
-  .mark { width: 34px; height: 34px; display: block; }
-  h1 { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; margin: 30px 0 0; }
-  .lede { color: var(--muted); font-size: 17px; margin: 14px 0 0; max-width: 50ch; }
-  .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 52px 0 14px; }
-  .features { list-style: none; }
-  .features li { color: var(--muted); font-size: 16px; padding-left: 18px; position: relative; margin-top: 11px; max-width: 52ch; }
-  .features li::before { content: ""; position: absolute; left: 0; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: #d1d5db; }
-  .features b { color: var(--ink); font-weight: 600; }
-  .actions { margin-top: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; background: var(--ink); padding: 11px 18px; border-radius: 10px; font-size: 15px; font-weight: 500; }
-  .btn.disabled { background: #f3f4f6; color: var(--muted); pointer-events: none; }
-  .btn:hover { opacity: .85; }
-  .link { text-decoration: none; color: var(--ink); font-size: 15px; display: inline-flex; align-items: baseline; gap: 6px; }
-  .link .arrow { color: var(--muted); transition: transform .15s ease; }
-  .link:hover .arrow { transform: translateX(3px); color: var(--ink); }
-  .note { color: var(--muted); font-size: 15px; margin-top: 26px; }
-  footer { max-width: 560px; margin: 0 auto; padding: 20px 28px 64px; color: var(--muted); font-size: 13.5px; }
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { color: var(--ink); }
-  .dot { margin: 0 8px; opacity: .5; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; color: var(--ink); background: var(--paper); font: 400 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .shell { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+  .product-nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 760; text-decoration: none; letter-spacing: -.01em; }
+  .mark { width: 31px; height: 31px; display: block; }
+  .nav-side { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 13px; font-weight: 700; }
+  .nav-side a { text-decoration: none; }
+  .nav-side a:hover { color: var(--ink); }
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(70px, 10vw, 126px) 0;
+    border-bottom: 1px solid var(--line);
+    background: radial-gradient(circle at 82% 18%, var(--accent-soft), transparent 31rem);
+  }
+  .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(color-mix(in srgb, var(--accent) 22%, transparent) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(90deg, transparent 35%, #000); opacity: .55; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(48px, 8vw, 100px); align-items: center; }
+  .eyebrow { margin: 0 0 20px; color: var(--accent-deep); font-size: 12px; font-weight: 820; letter-spacing: .13em; text-transform: uppercase; }
+  h1, h2, h3 { line-height: 1.06; letter-spacing: -.04em; }
+  h1 { max-width: 700px; margin: 0 0 24px; font-size: clamp(48px, 7vw, 82px); }
+  .lede { max-width: 610px; margin: 0; color: var(--muted); font-size: clamp(19px, 2vw, 23px); line-height: 1.5; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
+  .button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; padding: 0 21px; border: 1px solid var(--accent-deep); border-radius: 999px; color: #fff; background: var(--accent-deep); font-weight: 760; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+  .button:hover { transform: translateY(-2px); box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 24%, transparent); }
+  .button.secondary { color: var(--ink); background: var(--surface); border-color: var(--line); }
+  .button.disabled { color: var(--muted); background: #e9e6de; border-color: #e9e6de; }
+  .product-visual { position: relative; min-height: 390px; display: grid; place-items: center; }
+  .visual-panel { width: min(100%, 440px); overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); border-radius: 28px; background: color-mix(in srgb, var(--surface) 94%, var(--accent)); box-shadow: var(--shadow); transform: rotate(2deg); }
+  .visual-bar { min-height: 42px; display: flex; align-items: center; gap: 7px; padding: 0 16px; border-bottom: 1px solid var(--line); }
+  .visual-bar span { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 45%, white); }
+  .visual-body { padding: 24px; }
+  .search { padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); border-radius: 12px; color: var(--muted); background: #fff; font-size: 14px; }
+  .result { display: grid; grid-template-columns: 34px 1fr; gap: 12px; margin-top: 14px; padding: 12px; border-radius: 12px; background: var(--accent-soft); }
+  .result-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; color: #fff; background: var(--accent-deep); font-size: 12px; font-weight: 800; }
+  .line { height: 7px; margin-top: 6px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 24%, white); }
+  .line.short { width: 55%; }
+  .element-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .element { aspect-ratio: 1; display: grid; place-items: center; border-radius: 10px; color: var(--accent-deep); background: var(--accent-soft); font-weight: 800; }
+  .element.featured { color: #fff; background: var(--accent-deep); transform: scale(1.08); box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 28%, transparent); }
+  .phrase { margin-bottom: 12px; padding: 15px 16px; border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line)); border-radius: 14px; background: #fff; }
+  .phrase small { display: block; color: var(--muted); }
+  .phrase strong { display: block; margin-top: 2px; font-size: 19px; }
+  .math-question { padding: 26px 10px 32px; text-align: center; font-size: 48px; font-weight: 800; letter-spacing: -.05em; }
+  .answer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .answer { min-height: 54px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 13px; background: #fff; font-weight: 750; }
+  .answer.correct { color: #fff; background: var(--accent-deep); border-color: var(--accent-deep); }
+  .feature-section { padding: clamp(72px, 9vw, 112px) 0; }
+  .section-head { max-width: 690px; margin-bottom: 42px; }
+  .section-head h2 { margin: 0 0 16px; font-size: clamp(36px, 5vw, 58px); }
+  .section-head p { margin: 0; color: var(--muted); font-size: 18px; }
+  .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .feature { padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+  .feature-number { display: inline-grid; min-width: 32px; height: 32px; place-items: center; margin-bottom: 34px; border-radius: 50%; color: var(--accent-deep); background: var(--accent-soft); font: 800 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .feature h3 { margin: 0 0 10px; font-size: 21px; }
+  .feature p { margin: 0; color: var(--muted); font-size: 15px; }
+  .trust { padding: 62px 0; color: #f7f5ef; background: var(--ink); }
+  .trust-row { display: grid; grid-template-columns: 1.1fr .9fr; gap: 46px; align-items: center; }
+  .trust h2 { margin: 0; font-size: clamp(30px, 4vw, 46px); }
+  .trust p { margin: 0; color: #afb0b5; }
+  .site-footer { padding: 30px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+  .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .footer-links { display: flex; gap: 18px; }
+  .footer-links a { text-decoration: none; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 800px) {
+    .hero-grid, .trust-row { grid-template-columns: 1fr; }
+    .product-visual { min-height: 320px; }
+    .visual-panel { max-width: 500px; }
+  }
+  @media (max-width: 580px) {
+    .shell { width: min(100% - 28px, var(--max)); }
+    .nav-side a:first-child { display: none; }
+    .hero { padding-top: 58px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .product-visual { min-height: 280px; }
+    .visual-body { padding: 18px; }
+    .footer-row { align-items: flex-start; flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  }
 </style>
 </head>
 <body>
+<nav class="product-nav shell" aria-label="Product navigation">
+  <a class="brand" href="https://openappsstudio.com" aria-label="Open Apps Studio home"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true" fill="currentColor"><path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(45 50 50)"/><path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(135 50 50)"/><path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(225 50 50)"/><path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(315 50 50)"/></svg><span>Open Apps Studio</span></a>
+  <div class="nav-side"><a href="#features">Features</a><a href="https://github.com/Open-Apps-Studio/mental-math">Source ↗</a></div>
+</nav>
 <main>
-  <a href="https://openappsstudio.com" aria-label="Open Apps Studio">
-    <svg class="mark" viewBox="0 0 100 100" fill="#111111">
-      <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(45 50 50)"/>
-      <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(135 50 50)"/>
-      <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(225 50 50)"/>
-      <path d="M50 61 C44 59 38 49 37 36 C36 23 42 12 50 12 C58 12 64 23 63 36 C62 49 56 59 50 61 Z" transform="rotate(315 50 50)"/>
-    </svg>
-  </a>
-
-  <h1>Mental Math</h1>
-  <p class="lede">A free mental-arithmetic trainer — daily challenges, timed tests, and the tricks behind them.</p>
-
-  <div class="eyebrow">What it does</div>
-  <ul class="features">
-    <li><b>Tests</b> — a 60-second daily challenge plus timed sprints, marathons, and per-operation runs that track your best.</li>
-    <li><b>Trainer</b> — pick the operations and number types, set the difficulty, and go.</li>
-    <li><b>Knowledge</b> — a library of mental-math tricks with step-by-step walk-throughs and worked examples.</li>
-    <li><b>Progress</b> — accuracy, best runs, and daily streaks over time.</li>
-    <li><b>Everything free</b> — no Pro tier, paywall, or locked content.</li>
-  </ul>
-
-  <div class="actions">
-    <span class="btn disabled">In review for the App Store</span>
-    <a class="link" href="https://github.com/Open-Apps-Studio/mental-math">Source on GitHub <span class="arrow">&rarr;</span></a>
-  </div>
-
-  <p class="note">Coming soon to the App Store. No ads, no paywalls, no accounts.</p>
+  <section class="hero">
+    <div class="hero-grid shell">
+      <div>
+        <p class="eyebrow">Daily practice · Clear techniques · Always free</p>
+        <h1>Mental Math</h1>
+        <p class="lede">Train faster, more confident arithmetic with focused challenges—and learn the techniques that make the answers click.</p>
+        <div class="actions"><span class="button disabled">In review for the App Store</span><a class="button secondary" href="https://github.com/Open-Apps-Studio/mental-math">View source</a></div>
+      </div>
+      <div class="product-visual" aria-hidden="true"><div class="visual-panel"><div class="visual-bar"><span></span><span></span><span></span></div><div class="visual-body"><div class="math-question">24 × 15</div><div class="answer-grid"><span class="answer">320</span><span class="answer correct">360</span><span class="answer">390</span><span class="answer">420</span></div></div></div></div>
+    </div>
+  </section>
+  <section class="feature-section shell" id="features">
+    <div class="section-head"><p class="eyebrow">Built for the job</p><h2>Practice the speed. Understand the method.</h2><p>Build number sense through short challenges, customizable drills, and worked techniques.</p></div>
+    <div class="feature-grid"><article class="feature"><span class="feature-number">01</span><h3>Tests with purpose</h3><p>Take a 60-second daily challenge, focused sprints, marathons, and operation-specific runs.</p></article><article class="feature"><span class="feature-number">02</span><h3>A flexible trainer</h3><p>Choose operations, number types, and difficulty so practice fits the skill you are building.</p></article><article class="feature"><span class="feature-number">03</span><h3>Techniques explained</h3><p>Learn mental-math shortcuts through step-by-step walkthroughs and worked examples.</p></article><article class="feature"><span class="feature-number">04</span><h3>Progress over time</h3><p>Track accuracy, best runs, and daily streaks without a paid tier or locked content.</p></article></div>
+  </section>
+  <section class="trust"><div class="trust-row shell"><h2>The whole trainer is the product.</h2><p>No ads, no Pro tier, no accounts, and no locked lesson library. Mental Math is currently in review for the App Store.</p></div></section>
 </main>
-
-<footer>
-  © 2026 Open Apps Studio
-  <span class="dot">·</span><a href="https://openappsstudio.com">Studio</a>
-  <span class="dot">·</span><a href="https://github.com/Open-Apps-Studio/mental-math">Source</a>
-</footer>
+<footer class="site-footer"><div class="footer-row shell"><span>© 2026 Mental Math · An Open Apps Studio project</span><div class="footer-links"><a href="https://openappsstudio.com">Studio</a><a href="https://github.com/Open-Apps-Studio/mental-math">Source</a></div></div></footer>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
