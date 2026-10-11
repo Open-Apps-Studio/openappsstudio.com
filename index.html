@@ -31,7 +31,8 @@
     { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Cold Storage", "applicationCategory": "UtilitiesApplication", "operatingSystem": "macOS", "url": "https://coldstorage.openappsstudio.com" } },
     { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Periodic Table", "applicationCategory": "EducationApplication", "operatingSystem": "iOS", "url": "https://periodic.openappsstudio.com" } },
     { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Lingo Lessons", "applicationCategory": "EducationApplication", "operatingSystem": "iOS", "url": "https://lingo.openappsstudio.com" } },
-    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Mental Math", "applicationCategory": "EducationApplication", "operatingSystem": "iOS", "url": "https://mentalmath.openappsstudio.com" } }
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Mental Math", "applicationCategory": "EducationApplication", "operatingSystem": "iOS", "url": "https://mentalmath.openappsstudio.com" } },
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Star Map", "applicationCategory": "ReferenceApplication", "operatingSystem": "iOS", "url": "https://github.com/Open-Apps-Studio/star-map" } }
   ]
 }
 </script>
@@ -155,6 +156,8 @@
   .app-card.periodic { --product: #16845b; }
   .app-card.lingo { --product: #d9544f; }
   .app-card.math { --product: #b86b00; }
+  .app-card.stars { --product: #8ea2ff; background: #0d1021; color: #f2f3fb; border-color: #232849; }
+  .app-card:nth-child(7) { grid-column: span 12; }
   .card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .app-icon {
     width: 48px; height: 48px; display: grid; place-items: center;
@@ -318,6 +321,13 @@
         <h3>Mental Math</h3>
         <p>Daily challenges, timed practice, and the techniques behind faster arithmetic.</p>
         <span class="card-link">Train your number sense <span class="arrow">→</span></span>
+      </a>
+
+      <a class="app-card stars" href="https://github.com/Open-Apps-Studio/star-map">
+        <div class="card-top"><span class="app-icon" aria-hidden="true">✦</span><span class="platform">iPhone · In review</span></div>
+        <h3>Star Map</h3>
+        <p>The real sky above you, with AR, tonight's best targets, a sky calendar and ISS alerts. Every feature unlocked.</p>
+        <span class="card-link">Look up <span class="arrow">→</span></span>
       </a>
     </div>
   </section>
